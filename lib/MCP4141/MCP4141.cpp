@@ -6,10 +6,11 @@ MCP4141::MCP4141(){
 
 MCP4141::MCP4141(uint8_t ce){
     SPI.begin();
-    this->chip_enable = ce;
-    this->pos = 0;
-    pinMode(this->chip_enable, OUTPUT);
-    this->setPos(127);
+    chip_enable = ce;
+    pos = 0;
+    pinMode(chip_enable, OUTPUT);
+    digitalWrite(chip_enable, HIGH);
+    setPos(127);
 }
 
 uint8_t MCP4141::setPos(uint8_t p){
@@ -17,7 +18,6 @@ uint8_t MCP4141::setPos(uint8_t p){
     SPI.transfer(0);
     SPI.transfer(p);
     digitalWrite(chip_enable, HIGH);
-    digitalWrite(chip_enable, LOW);
     pos = p;
     return pos;
 };

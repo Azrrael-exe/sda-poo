@@ -1,5 +1,5 @@
-#include <Arduino.h>
 #include <SPI.h>
+#include <Arduino.h>
 #include <MCP4141.h>
 
 MCP4141 pot = MCP4141(8);
@@ -9,9 +9,8 @@ void setup() {
 }
 
 void loop() {
-    for(int i=0; i < 127; i++){
-        Serial.println(pot.increment());
+    for(int i=0; i<127; i++){
+        pot.setPos(i);
         delay(100);
     }
-    pot.setPos(0);
 }
