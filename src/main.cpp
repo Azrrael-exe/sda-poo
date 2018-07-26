@@ -1,16 +1,14 @@
-#include <SPI.h>
 #include <Arduino.h>
-#include <MCP4141.h>
+#include "amodulator.h"
 
-MCP4141 pot = MCP4141(8);
+AMMODULATOR mod = AMMODULATOR(6, 8);
 
 void setup() {
     Serial.begin(115200);
+    mod.init(64);
 }
 
 void loop() {
-    for(int i=0; i<127; i++){
-        pot.setPos(i);
-        delay(100);
-    }
+    mod.setPos(random(0, 127));
+    delay(10);
 }
