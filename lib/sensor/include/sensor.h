@@ -5,7 +5,7 @@
 #include <circular.h>
 
 class Sensor {
-private:
+protected:
     float value;
     float scale;
     bool is_ready;
@@ -14,7 +14,7 @@ private:
 public:
     Sensor(){};
     Sensor(uint8_t size, float scale);
-    void sample();
+    virtual void sample();
     float getValue();
 };
 
