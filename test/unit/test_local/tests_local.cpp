@@ -5,6 +5,7 @@
 int main(int argc, char **argv) {
     UNITY_BEGIN();
     RUN_TEST(testAnalogSensor);
+    RUN_TEST(testSensor);
     RUN_TEST(testCircularBuffer);
     UNITY_END();
     return 0;

@@ -14,7 +14,7 @@ protected:
 public:
     Sensor(){};
     Sensor(uint8_t size, float scale);
-    virtual void sample();
+    virtual void sample(){};
     float getValue();
 };
 
