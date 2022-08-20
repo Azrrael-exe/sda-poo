@@ -19,6 +19,10 @@ void loop(){
     if (Serial.available()){
         Serial.println(temperature_sensor.getValue());
         Serial.println(preasure_sensor.getValue());
+        while (Serial.available()) {
+            Serial.read();
+        }
+        
     }
 
 }
