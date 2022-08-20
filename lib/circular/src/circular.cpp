@@ -1,4 +1,6 @@
+#include <stdint.h>
 #include <circular.h>
+
 
 CircularBuffer::CircularBuffer(int size) {
     this->list = new int[size];
@@ -56,4 +58,17 @@ int CircularBuffer::outIndex() {
 
 int CircularBuffer::freeSlots() {
     return this->free_slots;
+}
+
+int CircularBuffer::getValueFromIndex(int index) {
+    return this->list[index];
+}
+
+float CircularBuffer::mean() {
+    int sum = 0;
+    uint8_t max_iterator = (this->freeSlots() == 0) ? this->size : this->in_index;
+    for(uint8_t i=0; i < max_iterator; i++) {
+        sum += this->list[i];
+    }
+    return float(sum) / max_iterator;
 }

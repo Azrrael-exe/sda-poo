@@ -1,5 +1,5 @@
-#ifndef CIRCULAR_BUFFER
-#define CIRCULAR_BUFFER
+#ifndef CIRCULAR
+#define CIRCULAR
 
 class CircularBuffer {
 protected:
@@ -9,12 +9,15 @@ protected:
     int size;
     int free_slots;
 public:
+    CircularBuffer(){};
     CircularBuffer(int size);
     bool add(int value);
     int remove();
     int inIndex();
     int outIndex();
     int freeSlots();
+    int getValueFromIndex(int index);
+    float mean();
 };
 
 #endif
