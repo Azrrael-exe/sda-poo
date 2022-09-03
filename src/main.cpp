@@ -1,12 +1,16 @@
 #include <Arduino.h>
-#include <sensor.h>
+#include <analogsensor.h>
 
-Sensor temperature_sensor = Sensor(20, 1);
-Sensor preasure_sensor = Sensor(10, 2);
+#include <logger.h>
+
+AnalogSensor temperature_sensor = AnalogSensor(20, 0.5, A0);
+AnalogSensor preasure_sensor = AnalogSensor(20, 7.0, A1);
 
 long timer = millis();
 
 void setup(){
+    pinMode(A0,INPUT);
+    pinMode(A1, INPUT);
     Serial.begin(115200);
 }
 
@@ -17,12 +21,10 @@ void loop(){
         timer = millis();
     }
     if (Serial.available()){
-        Serial.println(temperature_sensor.getValue());
+        loggerFormater(Serial, temperature_sensor.getValue());
         Serial.println(preasure_sensor.getValue());
         while (Serial.available()) {
             Serial.read();
         }
-        
     }
-
 }
